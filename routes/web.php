@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ServicioController;
+use App\Models\Cliente;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,8 +22,8 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+        'clientes' => Cliente::get()
+       
     ]);
 });
 
@@ -36,4 +38,15 @@ Route::middleware([
     })->name('dashboard');
 
     Route::resource('clientes', ClienteController::class); 
+    Route::resource('servicios', ServicioController::class); 
+
+    Route::get('view/cliente/{cliente}', function (Cliente $cliente){
+        
+        $servicios = $cliente->servicios;
+
+        return inertia('View', [
+            'cliente' => $cliente,
+            'servicios' => $servicios,
+        ]);
+    })->name('viewcliente');
 });

@@ -4,6 +4,7 @@ import '../css/app.css';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
+import ConfirmationService from 'primevue/confirmationservice';
 import PrimeVue from 'primevue/config';
 import "primevue/resources/themes/mdc-light-indigo/theme.css"       //thema gratuido que soporta Composicion API de Vue 3
 import "primevue/resources/primevue.min.css"                 //core css
@@ -20,6 +21,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .use(PrimeVue)
+            .use(ConfirmationService)
             .mount(el);
     },
     progress: {

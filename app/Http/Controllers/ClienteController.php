@@ -53,8 +53,8 @@ class ClienteController extends Controller
     public function show(Cliente $cliente)
     {
         $servicios = $cliente->servicios;
-        return inertia('clientes/show', [
-            'clientes' => $cliente,
+        return inertia('clientes/Show', [
+            'cliente' => $cliente,
             'servicios' => $servicios,
         ]);
     }

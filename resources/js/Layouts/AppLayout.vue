@@ -7,6 +7,10 @@ import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Menubar from 'primevue/menubar';
 import { router } from '@inertiajs/vue3'
 
+const logout = () => {
+		router.post(route('logout'));
+	};
+
 
 	const items =  [
 			{
@@ -31,7 +35,7 @@ import { router } from '@inertiajs/vue3'
 					},
 					{
 						label: 'Agregar Cliente',
-						icon: 'pi pi-file-edit',
+						icon: 'pi pi-user-plus',
 						
 						command:	()=> {
 							router.get(route('clientes.create'))
@@ -39,6 +43,29 @@ import { router } from '@inertiajs/vue3'
 					},
 				
 					
+				]
+			},		
+			{
+				label:'Servicios',
+				icon: 'pi pi-inbox',
+				
+				items: [
+					{
+						label: 'Lista de Servicios',
+						icon: 'pi pi-book',
+						
+						command:	()=> {
+							router.get(route('servicios.index'))
+						}
+					},
+					{
+						label: 'Agregar Servicio',
+						icon: 'pi pi-file-edit',
+						
+						command:	()=> {
+							router.get(route('servicios.create'))
+						}
+					},
 				]
 			},		
 	]
